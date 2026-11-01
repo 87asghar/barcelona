@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>برشلونة · ليلة الملعب</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.phone{background:radial-gradient(120% 60% at 50% 100%,#0e5a2a,transparent 60%),linear-gradient(180deg,#030816,#08224e 70%)}
+.bg::after{content:'';position:absolute;left:50%;bottom:-18cqw;width:90cqw;height:90cqw;border:.5cqw solid rgba(255,255,255,.22);border-radius:50%;transform:translateX(calc(-50% + var(--px)*3cqw))}
+</style>
+</head>
+<body>
+<div class="phone" data-fx="particles" data-colors="#7fb2ff,#ffffff,#edbb00,#ff4d85">
+ <div class="bg"></div><canvas id="fx"></canvas>
+ <div class="ui">
+  <div class="crest"></div><div class="brand">FC BARCELONA</div>
+  <div class="clock"><div id="time">00:00</div><span id="seconds"></span><div id="date"></div></div>
+  <div id="hero"><div id="heroLeague"></div><div class="row"><span id="heroHome"></span><span id="heroScore"></span><span id="heroAway"></span></div><div id="countdown"></div></div>
+  <div id="matches"></div><div id="note"></div>
+ </div>
+ <div id="modal"><div class="sheet"><h2 id="modalTitle"></h2><p id="modalSub"></p><div class="hint" id="streamHint"></div><div id="streamList"></div><button id="closeBtn">إغلاق ✕</button></div></div>
+</div>
+<script src="app.js"></script>
+<script src="fx.js"></script>
+</body>
+</html>

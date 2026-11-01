@@ -1,0 +1,59 @@
+:root{--fg:#fff;--muted:rgba(255,255,255,.62);--accent:#edbb00;--card:rgba(255,255,255,.07);--cardb:rgba(255,255,255,.15);--live:#ff5a7a;--sheet:#10142b}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{display:grid;place-items:center;background:#0b0b10;font-family:"Tajawal","Segoe UI",Tahoma,sans-serif;overflow:hidden}
+
+/* مقاس Galaxy S26 Ultra تقريباً 1440x3120 */
+.phone{--px:0;--py:0;position:relative;overflow:hidden;container-type:size;color:var(--fg);
+ height:min(96vh,calc(96vw*3120/1440));aspect-ratio:1440/3120;border-radius:42px;
+ box-shadow:0 0 0 7px #1c1c24,0 30px 90px rgba(0,0,0,.7);touch-action:manipulation;user-select:none}
+@media(max-width:600px){.phone{height:100dvh;width:100vw;aspect-ratio:auto;border-radius:0;box-shadow:none}}
+#fx,.bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+.ui{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;padding:13cqw 7cqw 7cqw;gap:4.5cqw}
+.crest{width:17cqw;filter:drop-shadow(0 2cqw 4cqw rgba(0,0,0,.35));transition:transform .25s;
+ transform:translate3d(calc(var(--px)*-1.6cqw),calc(var(--py)*-1.6cqw),0)}
+.crest.pulse{animation:pulse .6s}
+@keyframes pulse{50%{transform:scale(1.14)}}
+.crest svg{display:block;width:100%}
+.brand{font-size:3cqw;letter-spacing:1.4cqw;color:var(--muted);font-weight:500;margin-top:-2cqw}
+
+.clock{text-align:center;direction:ltr;position:relative}
+#time{font-size:27cqw;font-weight:200;line-height:1;letter-spacing:-.6cqw;font-variant-numeric:tabular-nums}
+#seconds{display:inline-block;font-size:4cqw;color:var(--accent);margin-top:1cqw;letter-spacing:.8cqw}
+#date{direction:rtl;font-size:4.2cqw;color:var(--muted);margin-top:1.5cqw}
+
+#hero{width:100%;text-align:center;cursor:pointer;padding:5cqw 5cqw 4.5cqw;border-radius:7cqw;
+ background:var(--card);border:1px solid var(--cardb);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+ transform:translate3d(calc(var(--px)*.8cqw),calc(var(--py)*.8cqw),0)}
+#heroLeague{font-size:3.2cqw;color:var(--accent);letter-spacing:.3cqw}
+.row{display:flex;justify-content:space-between;align-items:center;margin:3.4cqw 0 2.6cqw;font-size:5.4cqw;font-weight:700}
+.row span{flex:1}
+#heroScore{flex:0 0 auto!important;font-size:9cqw;font-weight:800;padding:0 3cqw}
+#countdown{font-size:3.4cqw;color:var(--muted)}
+#countdown.live{color:var(--live);font-weight:700;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.45}}
+
+#matches{width:100%;flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:2.6cqw;scrollbar-width:none}
+#matches::-webkit-scrollbar{display:none}
+.match{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;padding:3.6cqw 4.6cqw;border-radius:5cqw;
+ background:var(--card);border:1px solid var(--cardb);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:transform .2s,background .2s}
+.match:active{transform:scale(.97)}
+.match .lg{font-size:2.9cqw;color:var(--accent)}
+.teams{display:flex;justify-content:space-between;align-items:center;margin:1.6cqw 0;font-size:4cqw;font-weight:600}
+.score{font-size:4.2cqw;padding:0 2cqw}
+.badge{font-size:2.9cqw;color:var(--muted)}.badge.live{color:var(--live);font-weight:700}
+.empty{color:var(--muted);text-align:center;font-size:3.6cqw}
+#note{font-size:2.8cqw;color:var(--muted);text-align:center}
+
+#modal{position:absolute;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:flex-end;z-index:9}
+#modal.open{display:flex}
+.sheet{width:100%;max-height:82%;overflow:auto;background:var(--sheet);color:var(--sheet-fg,#fff);border-radius:8cqw 8cqw 0 0;padding:6cqw 6cqw 8cqw;animation:up .3s ease-out}
+@keyframes up{from{transform:translateY(30%);opacity:0}}
+.sheet h2{font-size:5.6cqw}.sheet p{font-size:3.2cqw;color:var(--accent);margin:1cqw 0 3cqw}
+.sheet .hint{font-size:2.8cqw;opacity:.65;margin-bottom:3cqw;line-height:1.7}
+#streamList a{display:flex;align-items:center;gap:2cqw;color:inherit;text-decoration:none;padding:3.4cqw 4cqw;border-radius:4cqw;margin-bottom:2cqw;background:rgba(127,127,160,.16);font-size:3.7cqw}
+#streamList a:active{background:var(--accent);color:#000}
+#streamList small{margin-inline-start:auto;opacity:.65;font-size:2.8cqw}
+#streamList i{font-style:normal;opacity:.6}
+#closeBtn{all:unset;cursor:pointer;display:block;margin:3cqw auto 0;opacity:.6;font-size:3.4cqw}

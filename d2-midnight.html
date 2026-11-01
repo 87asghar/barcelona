@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>برشلونة · منتصف الليل</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.phone{background:linear-gradient(170deg,#0a1a3d,#050a1a 60%,#1a0614)}
+.wm{position:absolute;width:125cqw;top:22cqw;left:-12cqw;opacity:.07;filter:none;transform:translate3d(calc(var(--px)*-5cqw),calc(var(--py)*-5cqw),0)}
+.lines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 11.9cqw,rgba(237,187,0,.07) 12cqw 12.1cqw);transform:translateX(calc(var(--px)*2cqw))}
+</style>
+</head>
+<body>
+<div class="phone" data-fx="none" data-colors="#004d98,#a50044,#edbb00">
+ <div class="bg"><div class="lines"></div><div class="crest wm"></div></div><canvas id="fx"></canvas>
+ <div class="ui">
+  <div class="crest"></div><div class="brand">FC BARCELONA</div>
+  <div class="clock"><div id="time">00:00</div><span id="seconds"></span><div id="date"></div></div>
+  <div id="hero"><div id="heroLeague"></div><div class="row"><span id="heroHome"></span><span id="heroScore"></span><span id="heroAway"></span></div><div id="countdown"></div></div>
+  <div id="matches"></div><div id="note"></div>
+ </div>
+ <div id="modal"><div class="sheet"><h2 id="modalTitle"></h2><p id="modalSub"></p><div class="hint" id="streamHint"></div><div id="streamList"></div><button id="closeBtn">إغلاق ✕</button></div></div>
+</div>
+<script src="app.js"></script>
+<script src="fx.js"></script>
+</body>
+</html>

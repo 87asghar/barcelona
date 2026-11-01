@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>برشلونة · أورورا</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+.phone{background:#060a1c}
+</style>
+</head>
+<body>
+<div class="phone" data-fx="blobs" data-colors="#1d6fd6,#d6155f,#6a4cff,#edbb00">
+ <div class="bg"></div><canvas id="fx"></canvas>
+ <div class="ui">
+  <div class="crest"></div><div class="brand">FC BARCELONA</div>
+  <div class="clock"><div id="time">00:00</div><span id="seconds"></span><div id="date"></div></div>
+  <div id="hero"><div id="heroLeague"></div><div class="row"><span id="heroHome"></span><span id="heroScore"></span><span id="heroAway"></span></div><div id="countdown"></div></div>
+  <div id="matches"></div><div id="note"></div>
+ </div>
+ <div id="modal"><div class="sheet"><h2 id="modalTitle"></h2><p id="modalSub"></p><div class="hint" id="streamHint"></div><div id="streamList"></div><button id="closeBtn">إغلاق ✕</button></div></div>
+</div>
+<script src="app.js"></script>
+<script src="fx.js"></script>
+</body>
+</html>
