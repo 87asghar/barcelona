@@ -58,10 +58,13 @@ body{display:grid;place-items:center;background:#0b0b10;font-family:"Tajawal","S
 #streamList i{font-style:normal;opacity:.6}
 #closeBtn{all:unset;cursor:pointer;display:block;margin:3cqw auto 0;opacity:.6;font-size:3.4cqw}
 
-/* وضع الصورة: ?wall في الرابط */
+/* وضع الصورة: ?wall في الرابط (الساعة تظهر من شاشة القفل، فنخفيها) */
 .wall body{display:block}
 .wall .phone{height:100vh;width:100vw;aspect-ratio:auto;border-radius:0;box-shadow:none}
-.wall .clock,.wall #hero,.wall #matches,.wall #note,.wall #modal{display:none}
-.wall .ui{justify-content:center;padding-bottom:18cqw}
-.wall .crest:not(.wm){width:46cqw}
-.wall .brand{font-size:4.4cqw;letter-spacing:2.4cqw;margin-top:2cqw}
+.wall .clock,.wall #countdown,.wall #note,.wall #modal{display:none}
+.wall .ui{justify-content:flex-end;padding:0 7cqw 20cqw;gap:3.5cqw}
+.wall .crest:not(.wm){width:30cqw;margin-bottom:4cqw}
+.wall .brand{margin:0 0 4cqw}
+.wall #matches{flex:none;overflow:visible}
+.wall #hero{cursor:default}
+#heroDate{font-size:3.4cqw;color:var(--muted);margin-top:1cqw}

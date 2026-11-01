@@ -90,6 +90,7 @@ function updateHero() {
   if (!e) return;
   const st = stateOf(e);
   $("heroLeague").textContent = lg(e.strLeague);
+  $("heroDate").textContent = (st === "live" ? "● مباشر الآن · " : "") + timeLabel(e);
   $("heroHome").textContent = ar(e.strHomeTeam);
   $("heroAway").textContent = ar(e.strAwayTeam);
   $("heroScore").textContent = hasScore(e) ? `${e.intHomeScore} - ${e.intAwayScore}` : "VS";

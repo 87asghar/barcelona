@@ -1,0 +1,36 @@
+name: Update wallpapers
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: wallpapers
+  cancel-in-progress: true
+env:
+  TZ: Asia/Riyadh
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render wallpapers
+        run: |
+          python3 -m http.server 8080 >/dev/null 2>&1 &
+          sleep 2
+          mkdir -p wallpapers
+          for d in d1-aurora d2-midnight d3-stripes d4-night d5-light d6-dusk; do
+            for i in 1 2 3 4; do
+              google-chrome --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+                --window-size=1440,3120 --virtual-time-budget=6000 \
+                --screenshot="wallpapers/$d.png" "http://localhost:8080/$d.html?wall" >/dev/null 2>&1 || true
+              [ "$(stat -c%s wallpapers/$d.png)" -gt 150000 ] && break
+            done
+          done
+      - name: Commit if changed
+        run: |
+          git config user.name "wallpaper-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add wallpapers
+          git diff --cached --quiet || (git commit -m "Update wallpapers" && git push)
