@@ -68,3 +68,4 @@ body{display:grid;place-items:center;background:#0b0b10;font-family:"Tajawal","S
 .wall #matches{flex:none;overflow:visible}
 .wall #hero{cursor:default}
 #heroDate{font-size:3.4cqw;color:var(--muted);margin-top:1cqw}
+.wall .match.upcoming{display:none}
