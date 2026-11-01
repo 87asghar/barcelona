@@ -1,4 +1,5 @@
 // تفاعل الخلفيات: لمس / ماوس / ميلان الجوال + شعار + تأثيرات canvas
+if (/[?&]wall/.test(location.search)) document.documentElement.classList.add("wall");
 (() => {
   const phone = document.querySelector(".phone");
   const mode = phone.dataset.fx || "none";

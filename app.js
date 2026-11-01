@@ -1,18 +1,11 @@
 // ===== إعدادات =====
-const API_KEY = "3";            // مفتاح تجريبي مجاني من TheSportsDB، حط مفتاحك الخاص هنا لو عندك
+const API_KEY = "123";          // مفتاح تجريبي مجاني من TheSportsDB، حط مفتاحك الخاص هنا لو عندك
 const TEAM_ID = "133739";       // FC Barcelona
 const REFRESH_MS = 60 * 1000;   // تحديث كل دقيقة
 
 const API = `https://www.thesportsdb.com/api/v1/json/${API_KEY}`;
 const $ = (id) => document.getElementById(id);
 
-// مباريات احتياطية تظهر لو ما اشتغل الإنترنت أو الـ API (تواريخ تقريبية للتجربة فقط)
-const FALLBACK = [
-  { idEvent: "f1", strHomeTeam: "Barcelona", strAwayTeam: "Real Madrid", strLeague: "La Liga", dateEvent: plusDays(3), strTime: "20:00:00" },
-  { idEvent: "f2", strHomeTeam: "Bayern Munich", strAwayTeam: "Barcelona", strLeague: "UEFA Champions League", dateEvent: plusDays(9), strTime: "20:00:00" },
-  { idEvent: "f3", strHomeTeam: "Barcelona", strAwayTeam: "Sevilla", strLeague: "La Liga", dateEvent: plusDays(16), strTime: "18:30:00" },
-];
-function plusDays(n) { const d = new Date(Date.now() + n * 864e5); return d.toISOString().slice(0, 10); }
 
 // ===== الساعة =====
 function tickClock() {
@@ -46,7 +39,7 @@ function stateOf(e) {
   return now < k ? "upcoming" : "ft";
 }
 
-const AR = { "Barcelona": "برشلونة", "Real Madrid": "ريال مدريد", "Bayern Munich": "بايرن ميونخ", "Sevilla": "إشبيلية", "Atletico Madrid": "أتلتيكو مدريد", "Valencia": "فالنسيا" };
+const AR = { "Barcelona": "برشلونة", "Real Madrid": "ريال مدريد", "Bayern Munich": "بايرن ميونخ", "Sevilla": "إشبيلية", "Atletico Madrid": "أتلتيكو مدريد", "Valencia": "فالنسيا", "Aston Villa": "أستون فيلا", "Deportivo Alavés": "ديبورتيفو ألافيس" };
 const ar = (n) => AR[n] || n;
 const LEAGUE_AR = { "Spanish La Liga": "الدوري الإسباني", "La Liga": "الدوري الإسباني", "UEFA Champions League": "دوري أبطال أوروبا", "Copa del Rey": "كأس الملك", "Spanish Super Cup": "كأس السوبر الإسباني" };
 const lg = (n) => LEAGUE_AR[n] || n || "";
@@ -63,7 +56,7 @@ async function load() {
     next = n.events || []; last = l.results || [];
   } catch (_) { offline = true; }
 
-  if (!next.length && !last.length) { next = FALLBACK; offline = true; }
+  if (!next.length && !last.length) offline = true;
   EVENTS = [...last.slice(-1), ...next].filter((e) => isBarca(e.strHomeTeam) || isBarca(e.strAwayTeam));
   EVENTS.sort((a, b) => kickoff(a) - kickoff(b));
   render(offline);
@@ -88,7 +81,7 @@ function card(e) {
 function render(offline) {
   $("matches").innerHTML = EVENTS.map(card).join("") || `<p class="empty">لا توجد مباريات قادمة حالياً</p>`;
   document.querySelectorAll(".match").forEach((b) => (b.onclick = () => openStreams(b.dataset.id)));
-  const note = $("note"); if (note) note.textContent = offline ? "⚠ بيانات تجريبية: تعذر الاتصال بالـ API" : "";
+  const note = $("note"); if (note) note.textContent = offline ? "⚠ تعذر جلب المباريات من الإنترنت" : "";
   updateHero();
 }
 
